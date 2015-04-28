@@ -5,7 +5,7 @@
 }
 
 .result {
-    height: 350px;
+    height: 375px;
 }
 
 .result img {
@@ -25,4 +25,12 @@
 
 #searchBox div {
     display: inline-block;
+}
+
+.removeBtn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #919aac;
+    border-radius: 15px;
 }
