@@ -17,11 +17,10 @@ function searchCallback(results) {
     console.log("removed array", removedArray);
     $('.searchResults').empty();
     rowCount = 0;
-    j = 0;
     for (i = 0; i < 9; i++) {
         console.log("iteration " + i + ", removedArray value is " + removedArray[i]);
         if (removedArray[i] != true) {
-            if (j % 3 == 0) { //check to see if game should be start of a new row, based on j
+            if (i % 3 == 0) { //check to see if game should be start of a new row, based on j
                 rowCount++;
                 $(".searchResults").append("<div class='row' id='row" + rowCount + "'></div>");
             }
@@ -38,7 +37,6 @@ function searchCallback(results) {
             $("#result" + i).append(
                 "<div class='btn btn-default btn-sm removeBtn'>Remove Title</div>");
             $("#result" + 1).hide().fadeIn(400);
-            j++;
         }
     }
 }
@@ -47,10 +45,20 @@ $(document).ready(function() {
     searchTerm = 'smash';
     console.log(search(searchTerm));
 	$('.searchResults').on("click", ".removeBtn", function () {
-        $(this).parent(".result").addClass("removed").fadeOut(300);
-        search(searchTerm);
+        $(this).parent(".result").remove();
+        rowCheck();
     })
 });
+
+function rowCheck() {
+    for (k=1; k < rowCount + 1; k++) {
+        console.log("row " + k + " has "+  $('#row' + k).children(":visible").length + " children");
+        numChildren = $('#row' + k).children(":visible").length;
+        if (numChildren < 3) {
+            $('#row' + (k+1)).firstChild().detach().appendTo('#DestinationContainerNode');
+        }
+    }
+}
 
 // HELPER FUNCTION
 // Executes a search using 'query' and runs searchCallback on the results of a success.

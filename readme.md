@@ -1,3 +1,8 @@
+Included in this repo are two scripts: 
+- goodReSearchScript.js: fully functioning script that adjusts div position by re-running the search and excluding removed games from displaying. Currently not being linked to index.html as I work on script.js.
+- script.js: After finishing the "re-search" script, I'm working on trying to get the same shifting functionality by counting the number of divs in a row and adjusting rows accordingly, per Joe's suggestion. 
+
+
 # Solo Challenge - Bootstrap - 1 
 Challenge points:
 - Front End Styling
