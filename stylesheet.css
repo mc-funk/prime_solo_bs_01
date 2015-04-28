@@ -1,0 +1,28 @@
+
+.well {
+    background-color: #a7b1c6;
+    border-radius: 15px;
+}
+
+.result {
+    height: 350px;
+}
+
+.result img {
+    max-width: 350px;
+    max-height: 150px;
+    border: solid 1px #a7791e;
+    display: block;
+    text-align: center;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+#searchBox {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#searchBox div {
+    display: inline-block;
+}

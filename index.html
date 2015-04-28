@@ -10,19 +10,25 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href"stylesheet.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
 	<div class="container">
-		<div>
-			<p>Search: <input type="text" name="name" id="searchField"/></p>
-			<div class="btn btn-default searchBtn">Search</div>
+		<div id="searchBox" >
+			<div>Search: <input type="text" name="name" id="searchField"/></div>
+			<div class="btn btn-default btn-sm searchBtn">Search</div>
 		</div>
 	</div>
 
+	<div class="searchResults">
+	</div>
 	<!-- SCRIPTS -->
+	<script src="jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="script.js"></script>
 	<!-- END SCRIPTS -->
 </body>
 </html>
+
