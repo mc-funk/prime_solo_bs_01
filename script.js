@@ -4,26 +4,23 @@ var j;
 var rowCount = 0;
 var searchTerm;
 var adjust = 0;
-var removed;
+var removedArray = [];
 
-// Use this function to do stuff with your results. 
-// It is called after 'search' is executed.
+
 function searchCallback(results) {
-    console.log($(".searchResults .removed"));
-    $(".searchResults .removed").each(function () {
-        removed = $(this).data("index");
-        console.log("removed in callback for children: " + removed);
-    });
-    console.log("result of child search for removed: ", $(".searchResults").children(".removed"));
-    console.log("value of removed is: " + removed);
+    for (i = 0; i < 9; i++) {
+        if ($("#result" + i).hasClass("removed")) {
+            removedArray[i] = $("#result" + i).hasClass("removed")
+            console.log("removed array " + i + " value: " + removedArray[i]);
+        }
+    }
+    console.log("removed array", removedArray);
     $('.searchResults').empty();
     rowCount = 0;
-    console.log(results);
+    j = 0;
     for (i = 0; i < 9; i++) {
-        console.log("removed: " + removed);
-        console.log(i + "is equal to removed:" + (i == removed));
-        if (i != removed) {
-            j = i - adjust;
+        console.log("iteration " + i + ", removedArray value is " + removedArray[i]);
+        if (removedArray[i] != true) {
             if (j % 3 == 0) { //check to see if game should be start of a new row, based on j
                 rowCount++;
                 $(".searchResults").append("<div class='row' id='row" + rowCount + "'></div>");
@@ -40,23 +37,16 @@ function searchCallback(results) {
                 "<p>" + results[i].deck + "</p>");
             $("#result" + i).append(
                 "<div class='btn btn-default btn-sm removeBtn'>Remove Title</div>");
-        } else {
-            adjust += 1;
-            console.log("adjust set +1");
+            j++;
         }
     }
-    adjust = 0;
-    removed = null;
 }
-
-
 
 $(document).ready(function() {
     searchTerm = 'smash';
     console.log(search(searchTerm));
 	$('.searchResults').on("click", ".removeBtn", function () {
-        $(this).parent(".result").fadeOut(300).addClass("removed");
-        console.log("data(index) of removed: " + $(this).parent(".result").data("index"));
+        $(this).parent(".result").addClass("removed").fadeOut(300);
         search(searchTerm);
     })
 });
