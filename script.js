@@ -37,6 +37,7 @@ function searchCallback(results) {
                 "<p>" + results[i].deck + "</p>");
             $("#result" + i).append(
                 "<div class='btn btn-default btn-sm removeBtn'>Remove Title</div>");
+            $("#result" + 1).hide().fadeIn(400);
             j++;
         }
     }
