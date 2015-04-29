@@ -22,7 +22,7 @@ function searchCallback(results) {
         if (removedArray[i] != true) {
             if (i % 3 == 0) { //check to see if game should be start of a new row, based on j
                 rowCount++;
-                $(".searchResults").append("<div class='row' id='row" + rowCount + "'></div>");
+                $(".searchResults").append("<div class='row' id='row" + rowCount + "'></div>").hide().fadeIn(400);;
             }
             $("#row" + rowCount).append(
                 "<div data-index=" + i + " class='result col-md-4 well' id='result" + i + "'></div>");
@@ -36,18 +36,23 @@ function searchCallback(results) {
                 "<p>" + results[i].deck + "</p>");
             $("#result" + i).append(
                 "<div class='btn btn-default btn-sm removeBtn'>Remove Title</div>");
-            $("#result" + 1).hide().fadeIn(400);
+            $("#result" + 1)
         }
     }
 }
 
 $(document).ready(function() {
-    searchTerm = 'smash';
-    console.log(search(searchTerm));
+
 	$('.searchResults').on("click", ".removeBtn", function () {
         $(this).parent(".result").remove();
         rowCheck();
-    })
+    });
+
+    $('.searchBtn').on("click", function() {
+        console.log("Click worked at all");
+        console.log($(".searchField").val());
+        search($("#searchField").val());
+    });
 });
 
 function rowCheck() {
@@ -55,7 +60,9 @@ function rowCheck() {
         console.log("row " + k + " has "+  $('#row' + k).children(":visible").length + " children");
         numChildren = $('#row' + k).children(":visible").length;
         if (numChildren < 3) {
-            $('#row' + (k+1)).firstChild().detach().appendTo('#DestinationContainerNode');
+            console.log("rowk+1: ", $('#row' + (k+1)).html());
+            console.log("first child: ", $('#row' + (k+1)).children('.result:first').html());
+            $('#row' + (k+1)).children('.result:first').detach().appendTo($('#row' + k));
         }
     }
 }
